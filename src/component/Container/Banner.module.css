@@ -1,0 +1,36 @@
+.custom-btn {
+  border-radius: 13px; /* Adjust the value as per your requirement */
+  background-color:  #782a26;
+  font-family: "Merriweather", serif;
+  color: black;
+}
+.custom-btn:hover{
+  border-radius: 13px; /* Adjust the value as per your requirement */
+  background-color: #97110a;
+}
+.banner  {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/img/dons-de-sang.jpg") center center / cover no-repeat fixed;
+  height: 100vh;
+}
+
+@media screen and (max-width: 768px) {
+  .banner {
+    height: 80vh; /* Adjust the height according to your needs */
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .banner{
+    height: 70vh; /* Adjust the height according to your needs */
+  }
+}
+
+
+.banner  h1 {
+  font-size: 48px;
+  font-weight: 400;
+  color: #fafaf2;
+  font-family: Arial, sans-serif; /* Specify Arial as the font family */
+  font-weight: bold; /* Set the font weight to bold for a robust style */
+}

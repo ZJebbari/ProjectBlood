@@ -1,0 +1,11 @@
+.custom-btn {
+  border-radius: 13px; /* Adjust the value as per your requirement */
+  background-color: #782a26;
+  font-family: "Merriweather", serif;
+  color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 10px 1px #131212;
+}
+.custom-btn:hover {
+  border-radius: 13px; /* Adjust the value as per your requirement */
+  background-color: #97110a;
+}

@@ -1,0 +1,25 @@
+a {
+    color: rgb(10, 9, 9);
+  }
+.form-control{
+    background-color:transparent;
+    border-color: rgb(85, 82, 82);
+    
+   
+  }
+  .btn-pers{
+    background-color: rgb(132, 4, 4);
+   border-color: transparent;
+   width: 50%;
+  }
+  .btn-pers:hover{
+    background-color: rgb(194, 6, 6);
+   
+  }
+  .user-profile-modal{
+    width: 500px;
+  }
+  .custom-input {
+    width: 100%; /* You can adjust the width as needed */
+  }
+  

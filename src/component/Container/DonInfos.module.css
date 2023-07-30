@@ -1,0 +1,10 @@
+p{
+    margin-left: 10px;  
+}
+ul.b {
+    list-style-type: square;
+  }
+  .imagePers:hover {
+    opacity: 0.5;
+   
+  }

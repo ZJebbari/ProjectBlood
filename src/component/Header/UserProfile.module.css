@@ -1,0 +1,17 @@
+
+  .user-profile-modal{
+    width: 500px;
+  }
+  .btn-pers{
+    background-color: rgb(132, 4, 4);
+   border-color: transparent;
+   width: 50%;
+  }
+  .btn-pers:hover{
+    background-color: rgb(194, 6, 6);
+   
+  }
+  .classe{
+    margin-bottom: 10%;
+  }
+  

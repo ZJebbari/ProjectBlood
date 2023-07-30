@@ -1,0 +1,28 @@
+
+.custom-btn {
+    border-radius: 13px; /* Adjust the value as per your requirement */
+    background-color: #782a26;
+  }
+  .custom-btn:hover {
+    border-radius: 13px; /* Adjust the value as per your requirement */
+    background-color: #9f0d05;
+  }
+  
+.order-form {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../../assets/img/dons-de-sang.jpg") center center / cover no-repeat fixed;
+  height: 60vh;
+}
+
+@media screen and (max-width: 768px) {
+  
+  .order-form {
+    height: 70vh; /* Adjust the height according to your needs */
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .order-form {
+    height: 100vh; /* Adjust the height according to your needs */
+  }
+}

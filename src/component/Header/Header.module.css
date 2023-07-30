@@ -1,0 +1,133 @@
+/* Header.module.css */
+
+/* Reduce the height of the entire navbar */
+.navbar {
+  height: 80px; /* Adjust the height as per your requirement */
+  padding-top: 5px; /* Adjust the top padding as per your requirement */
+  padding-bottom: 5px; /* Adjust the bottom padding as per your requirement */
+  background-color: rgba(11, 11, 11, 0.411);
+  font-family: "Merriweather", serif;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.486); /* This is the line that gives the shadow */
+  border-radius: 5px;
+  z-index: 99;
+}
+
+.navlink {
+  border-bottom: 1px solid transparent;
+  transition: padding-bottom 0.4s ease-in-out, border-color 0.3s ease;
+}
+
+.navlink:hover {
+  padding-bottom: 20px;
+  border-bottom-color: red;
+}
+/* Center the logo vertically within the navbar */
+.navbar-brand {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Header.module.css */
+
+.img-fluid {
+  height: 6em; /* Adjust as needed */
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  margin-top: 0; /* Remove any top margin */
+}
+
+/* Toggle button */
+.navbar-toggler {
+  height: 3em; /* Adjust as needed */
+  margin-top: 0; /* Remove any top margin */
+}
+
+.navbar-toggler-icon {
+  height: 1.5em; /* Adjust as needed */
+  width: 1.5em; /* Adjust as needed */
+  margin-top: 0; /* Remove any top margin */
+}
+
+/* Ensure that navbar contents are vertically aligned */
+.navbar-brand,
+.navbar-toggler,
+.navbar-nav > li {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .img-fluid {
+    height: 4em; /* Adjust as needed */
+  }
+
+  /* Adjust the size of the navbar toggle button */
+  .navbar-toggler,
+  .navbar-toggler-icon {
+    height: 2em; /* Adjust as needed */
+    width: 2em; /* Adjust as needed */
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .img-fluid {
+    height: 3.5em; /* Adjust as needed */
+  }
+
+  /* Adjust the size of the navbar toggle button */
+  .navbar-toggler,
+  .navbar-toggler-icon {
+    height: 1.5em; /* Adjust as needed */
+    width: 1.5em; /* Adjust as needed */
+  }
+}
+
+/* Ajoutez votre style personnalisé pour la boîte de dialogue modale */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.525);
+}
+/* PopopBox.css (ou le nom de votre fichier CSS) */
+
+/* Autres styles pour la boîte de dialogue modale... */
+
+.popup-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+/* Styles pour le popup-header */
+.popup-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Styles pour le bouton de fermeture (close-icon) */
+.close-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #333;
+  padding: 5px;
+}
+
+.close-icon:hover {
+  color: #ff0000;
+}
+
+/* Styles pour le contenu de la boîte de dialogue modale (UserProfileModal) */
+/* Ajoutez ici les styles que vous souhaitez pour le contenu de la boîte de dialogue */
+
+/* Désactiver le défilement lorsque la boîte de dialogue est ouverte */
