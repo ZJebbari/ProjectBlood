@@ -23,6 +23,20 @@ const Header = () => {
     document.body.style.overflow = "auto";
   };
 
+  const handleScrollToForm = () => {
+    console.log("Button clicked! Scrolling to FormRendezVous");
+    const formRendezVousElement = document.getElementById("formRendezVous");
+    if (formRendezVousElement) {
+      const scrollOptions = {
+        behavior: "smooth",
+        block: "start", // Scroll to the top of the target element
+      };
+      formRendezVousElement.scrollIntoView(scrollOptions);
+    } else {
+      console.log("Element not found");
+    }
+  };
+
   // Nettoyer l'écouteur d'événement lorsque le composant est démonté
   useEffect(() => {
     return () => {
@@ -81,11 +95,16 @@ const Header = () => {
                   <FontAwesomeIcon icon={faUser} />
                 </a>
               </li>
-              <li className="nav-item pe-4">
-                <Button>
+              {/* <li className="nav-item pe-4">
+                <Button onClick={handleScrollToForm}>
                   <a className={`btn text-white `} href="#">
                     Prendre rendez-vous
                   </a>
+                </Button>
+              </li> */}
+              <li className="nav-item pe-4">
+                <Button onClick={handleScrollToForm}>
+                  Prendre rendez-vous
                 </Button>
               </li>
             </ul>
