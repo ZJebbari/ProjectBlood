@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const FormConnexion = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const [showPassworda, setShowPassworda] = useState(false);
   const handlePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
