@@ -7,42 +7,34 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import classes from "./Header.module.css";
 import UserProfileModal from "./UserProfileModal";
 import Button from "../../UI/Button";
+import { Offcanvas, Stack,Modal,Form } from "react-bootstrap";
+import Signup from "../Container/Forms/Sinup";
 
 const Header = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+    setPopupOpen(false); // Fermez également la popup Offcanvas si elle est ouverte
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   const handleProfileIconClick = () => {
     setPopupOpen(!isPopupOpen);
     // Empêcher le défilement lorsque le popup est ouvert
-    document.body.style.overflow = isPopupOpen ? "auto" : "hidden";
   };
 
   const handleCloseIconClick = () => {
     setPopupOpen(false);
     // Rétablir le défilement lorsque le popup est fermé
-    document.body.style.overflow = "auto";
-  };
-
-  const handleScrollToForm = () => {
-    console.log("Button clicked! Scrolling to FormRendezVous");
-    const formRendezVousElement = document.getElementById("formRendezVous");
-    if (formRendezVousElement) {
-      const scrollOptions = {
-        behavior: "smooth",
-        block: "start", // Scroll to the top of the target element
-      };
-      formRendezVousElement.scrollIntoView(scrollOptions);
-    } else {
-      console.log("Element not found");
-    }
   };
 
   // Nettoyer l'écouteur d'événement lorsque le composant est démonté
-  useEffect(() => {
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
+
   return (
     <>
       <nav
@@ -95,44 +87,48 @@ const Header = () => {
                   <FontAwesomeIcon icon={faUser} />
                 </a>
               </li>
-              {/* <li className="nav-item pe-4">
-                <Button onClick={handleScrollToForm}>
+              <li className="nav-item pe-4">
+                <Button>
                   <a className={`btn text-white `} href="#">
                     Prendre rendez-vous
                   </a>
-                </Button>
-              </li> */}
-              <li className="nav-item pe-4">
-                <Button onClick={handleScrollToForm}>
-                  Prendre rendez-vous
                 </Button>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      {isPopupOpen && (
-        <>
-          <div
-            className={` ${classes["popup-overlay"]}`}
-            onClick={handleCloseIconClick}
-          ></div>
-          <div className={`${classes["popup-wrapper "]}`}>
-            <div className={`${classes["popup-box"]}`}>
-              <div className={`${classes["popup-header"]}`}>
-                <button
-                  className={`${classes["close-icon"]}`}
-                  onClick={handleCloseIconClick}
-                >
-                  <FontAwesomeIcon icon={faTimes} />
-                </button>
-              </div>
-              {/* Contenu de la boîte de dialogue modale */}
-              <UserProfileModal />
-            </div>
-          </div>
-        </>
-      )}
+      {
+        <Offcanvas
+          show={isPopupOpen}
+          onHide={handleCloseIconClick}
+          placement="end"
+          style={{ width: "520px" }}
+        >
+          <Offcanvas.Header>
+            <button
+              className={`${classes["close-icon"]}`}
+              onClick={handleCloseIconClick}
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            {/* Contenu de la boîte de dialogue modale */}
+            <UserProfileModal openModal={openModal} />
+          </Offcanvas.Body>
+        </Offcanvas>
+      }
+
+      <Modal show={showModal} onHide={closeModal}  >
+        <Modal.Header closeButton>
+          
+        </Modal.Header>
+        <Modal.Body>
+          <Signup/>
+        </Modal.Body>
+        
+      </Modal>
     </>
   );
 };

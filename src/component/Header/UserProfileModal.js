@@ -1,25 +1,34 @@
 import React, { useState } from "react";
-import classes from"./UserProfile.module.css";
+import classes from "./UserProfile.module.css";
+import { Button, Modal, Form } from 'react-bootstrap';
+
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import FormConnexion from "../Container/Forms/FormConnexion";
+import Signup from "../Container/Forms/Sinup";
 
-const UserProfileModal = () => {
+const UserProfileModal = ({openModal}) => {
+  
+  
   return (
-    <div  className={` ${classes["user-profile-modal"]}`}>
-      <div  className={` ${classes["classe"]}`}>
+    <div className={` ${classes["user-profile-modal"]}`}>
+      <div className={` ${classes["classe"]}`}>
         <h2>
           <b>Vous n'avez pas encore de compte?</b>
         </h2>
         <h6>creez votre compte en quelques minutes </h6>
-        <button type="submit" className={`btn btn-primary ${classes["btn-pers"]}`}>
-          JE CREE UN COMPTE
-        </button>
+        <Button
+          type="button"
+          className={`btn btn-primary ${classes["btn-pers"]}`}
+          onClick={openModal}
+        >
+          JE CRÉE UN COMPTE
+        </Button>
       </div>
       <div className={` ${classes["classe"]}`}>
-      <hr/> 
-      <FormConnexion  />
+        <hr />
+        <FormConnexion />
       </div>
-      
+   
     </div>
   );
 };
