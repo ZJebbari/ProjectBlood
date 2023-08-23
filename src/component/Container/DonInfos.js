@@ -11,7 +11,7 @@ const DonInfos = () => {
     <section className="available merriweather py-5">
       <div className="container">
         {/* Première carte */}
-        <div className="row">
+        <div className="row" id="donInfo">
           <div className="card mb-3 border-0 rounded-0">
             <div className="row">
               <div className="col-md-6">
