@@ -7,7 +7,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import classes from "./Header.module.css";
 import UserProfileModal from "./UserProfileModal";
 import Button from "../../UI/Button";
-import { Offcanvas, Stack,Modal,Form } from "react-bootstrap";
+import { Offcanvas, Stack, Modal, Form } from "react-bootstrap";
 import Signup from "../Container/Forms/Sinup";
 
 const Header = () => {
@@ -34,6 +34,31 @@ const Header = () => {
   };
 
   // Nettoyer l'écouteur d'événement lorsque le composant est démonté
+
+  const handleScrollToForm = () => {
+    const formRendezVousElement = document.getElementById("formRendezVous");
+    if (formRendezVousElement) {
+      const scrollOptions = {
+        behavior: "smooth",
+        block: "start", // Scroll to the top of the target element
+      };
+      formRendezVousElement.scrollIntoView(scrollOptions);
+    }
+  };
+
+  const handleScrollToCitoyenne = (event) => {
+    event.preventDefault(); // Prevent the default behavior of the anchor element
+
+    const donInformation = document.getElementById("donInfo");
+    if (donInformation) {
+      const scrollOptions = {
+        behavior: "smooth",
+        block: "start",
+      };
+
+      donInformation.scrollIntoView(scrollOptions);
+    }
+  };
 
   return (
     <>
@@ -73,7 +98,10 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item pe-4">
-                <a className={`nav-link active ${classes.navlink}`} href="#">
+                <a
+                  onClick={handleScrollToCitoyenne}
+                  className={`nav-link active ${classes.navlink}`}
+                >
                   Santé citoyenne
                 </a>
               </li>
@@ -87,13 +115,8 @@ const Header = () => {
                   <FontAwesomeIcon icon={faUser} />
                 </a>
               </li>
-              <li className="nav-item pe-4">
-                <Button>
-                  <a className={`btn text-white `} href="#">
-                    Prendre rendez-vous
-                  </a>
-                </Button>
-              </li>
+
+              <Button onClick={handleScrollToForm}>Prendre rendez-vous</Button>
             </ul>
           </div>
         </div>
@@ -120,14 +143,11 @@ const Header = () => {
         </Offcanvas>
       }
 
-      <Modal show={showModal} onHide={closeModal}  >
-        <Modal.Header closeButton>
-          
-        </Modal.Header>
+      <Modal show={showModal} onHide={closeModal}>
+        <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-          <Signup/>
+          <Signup />
         </Modal.Body>
-        
       </Modal>
     </>
   );
