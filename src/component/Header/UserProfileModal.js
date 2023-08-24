@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import classes from "./UserProfile.module.css";
-import { Button, Modal, Form } from 'react-bootstrap';
+import { Button, Modal, Form } from "react-bootstrap";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import FormConnexion from "../Container/Forms/FormConnexion";
-import Signup from "../Container/Forms/Sinup";
+import SignUp from "../Container/Forms/SignUp";
 
-const UserProfileModal = ({openModal}) => {
-  
-  
+const UserProfileModal = ({ openModal }) => {
   return (
     <div className={` ${classes["user-profile-modal"]}`}>
       <div className={` ${classes["classe"]}`}>
@@ -28,7 +26,6 @@ const UserProfileModal = ({openModal}) => {
         <hr />
         <FormConnexion />
       </div>
-   
     </div>
   );
 };

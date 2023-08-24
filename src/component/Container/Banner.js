@@ -3,8 +3,8 @@ import "../../assets/css/bootstrap.min.css";
 import "../../assets/css/styles.css";
 import classes from "./Banner.module.css";
 import Button from "../../UI/Button";
-import { Modal} from "react-bootstrap";
-import Signup from "./Forms/Sinup";
+import { Modal } from "react-bootstrap";
+import SignUp from "./Forms/SignUp";
 const Banner = () => {
   const [showModal, setShowModal] = useState(false);
 
@@ -29,19 +29,16 @@ const Banner = () => {
               DEVENEZ DONNEUR!
             </h1>
             <p>
-              <Button   onClick={openModal} >Je cree un compte</Button>
+              <Button onClick={openModal}>Je cree un compte</Button>
             </p>
           </div>
         </div>
       </div>
-      <Modal show={showModal} onHide={closeModal}  >
-        <Modal.Header closeButton>
-          
-        </Modal.Header>
+      <Modal show={showModal} onHide={closeModal}>
+        <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-          <Signup/>
+          <SignUp />
         </Modal.Body>
-        
       </Modal>
     </section>
   );

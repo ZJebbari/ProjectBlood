@@ -8,7 +8,7 @@ import classes from "./Header.module.css";
 import UserProfileModal from "./UserProfileModal";
 import Button from "../../UI/Button";
 import { Offcanvas, Stack, Modal, Form } from "react-bootstrap";
-import Signup from "../Container/Forms/Sinup";
+import SignUp from "../Container/Forms/SignUp";
 
 const Header = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -146,7 +146,7 @@ const Header = () => {
       <Modal show={showModal} onHide={closeModal}>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-          <Signup />
+          <SignUp />
         </Modal.Body>
       </Modal>
     </>
