@@ -1,0 +1,20 @@
+.invalid {
+  background-color: #f18181;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.invalid:focus {
+  background-color: #f18181; /* Maintain the background color on focus */
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.errorMessages p {
+  color: rgb(238, 48, 48);
+  margin: auto;
+}
+
+form p {
+  margin: 0;
+  padding: 0;
+  color: red;
+}
