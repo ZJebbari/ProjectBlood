@@ -1,0 +1,124 @@
+/* Header.module.css */
+
+/* Reduce the height of the entire navbar */
+.navbar {
+    height: 80px; /* Adjust the height as per your requirement */
+    padding-top: 5px; /* Adjust the top padding as per your requirement */
+    padding-bottom: 5px; /* Adjust the bottom padding as per your requirement */
+    background-color: rgba(11, 11, 11, 0.411);
+    font-family: "Merriweather", serif;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.486); /* This is the line that gives the shadow */
+    border-radius: 5px;
+    z-index: 99;
+  }
+  
+  .navlink {
+    border-bottom: 1px solid transparent;
+    transition: padding-bottom 0.4s ease-in-out, border-color 0.3s ease;
+  }
+  
+  .navlink:hover {
+    padding-bottom: 20px;
+    border-bottom-color: red;
+  }
+  /* Center the logo vertically within the navbar */
+  .navbar-brand {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Header.module.css */
+  
+  .img-fluid {
+    height: 6em; /* Adjust as needed */
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    margin-top: 0; /* Remove any top margin */
+  }
+  
+  /* Toggle button */
+  .navbar-toggler {
+    height: 3em; /* Adjust as needed */
+    margin-top: 0; /* Remove any top margin */
+  }
+  
+  .navbar-toggler-icon {
+    height: 1.5em; /* Adjust as needed */
+    width: 1.5em; /* Adjust as needed */
+    margin-top: 0; /* Remove any top margin */
+  }
+  
+  /* Ensure that navbar contents are vertically aligned */
+  .navbar-brand,
+  .navbar-toggler,
+  .navbar-nav > li {
+    display: flex;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .img-fluid {
+      height: 4em; /* Adjust as needed */
+    }
+  
+    /* Adjust the size of the navbar toggle button */
+    .navbar-toggler,
+    .navbar-toggler-icon {
+      height: 2em; /* Adjust as needed */
+      width: 2em; /* Adjust as needed */
+    }
+   
+  }
+  
+  @media screen and (max-width: 576px) {
+    .img-fluid {
+      height: 3.5em; /* Adjust as needed */
+    }
+
+  
+    /* Adjust the size of the navbar toggle button */
+    .navbar-toggler,
+    .navbar-toggler-icon {
+      height: 1.5em; /* Adjust as needed */
+      width: 1.5em; /* Adjust as needed */
+    }
+  }
+  
+
+
+ 
+/* Masquer la flèche de sélection du Dropdown.Toggle */
+.customToggle::after {
+  display: none;
+  border-bottom: none;
+}
+.dropdownmenu{
+  background-color: rgba(4, 4, 4, 0.482);
+}
+.dropdownitem{
+  color: white;
+
+}
+/* styles.css */
+.customlink {
+  text-decoration: none;
+  color: rgb(255, 251, 251);
+}
+.dropdownitem:hover,
+.dropdownitem Link:hover {
+  color: rgb(154, 5, 5);
+}
+
+
+
+
+
+
+  
+  /* Styles pour le contenu de la boîte de dialogue modale (UserProfileModal) */
+  /* Ajoutez ici les styles que vous souhaitez pour le contenu de la boîte de dialogue */
+  
+  /* Désactiver le défilement lorsque la boîte de dialogue est ouverte */
+  

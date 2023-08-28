@@ -1,0 +1,7 @@
+.verticaldiv{
+    display: flex;
+    flex-direction: column;
+  background-color: aqua;
+  height: 150px;
+  width: 200px;
+}

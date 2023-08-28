@@ -1,0 +1,37 @@
+
+  .banner  {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("../../assets/img/dons-de-sang.jpg") center center / cover no-repeat fixed;
+    height: 100vh;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .banner {
+      height: 80vh; /* Adjust the height according to your needs */
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .banner{
+      height: 120vh; /* Adjust the height according to your needs */
+    }
+  }
+  
+  
+  .banner  li {
+    font-size: 20px;
+    font-weight: 200;
+    color: #fafaf2;
+    font-family: Arial, sans-serif; /* Specify Arial as the font family */
+    /*font-weight: bold;  Set the font weight to bold for a robust style */
+  }
+  .banner  h1 {
+    font-size: 50px;
+    font-weight: 400;
+    color: #e6dbdb;
+    font-family: Arial, sans-serif; /* Specify Arial as the font family */
+    font-weight: bold; /* Set the font weight to bold for a robust style */
+  }
+  .redText {
+    color: red;
+  }
