@@ -10,7 +10,7 @@ const Dashboard = () => {
     <div >
        <Container className="text-center">
         <Row>
-          <Col>
+          <Col >
             1 of 2
           </Col>
           <Col>

@@ -1,0 +1,28 @@
+.banner {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../../assets/img/dondusang1.jpg") center center / cover no-repeat fixed;
+  height: 70vh;
+  background-size: 100% auto; /* Ajuste la largeur de l'image */
+  margin-top: 0%;
+  padding-top: 0%;
+  
+}
+
+  
+  @media screen and (max-width: 768px) {
+    .banner {
+      height: 80vh; /* Adjust the height according to your needs */
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .banner{
+      height: 120vh; /* Adjust the height according to your needs */
+    }
+  }
+  nav{
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+  }
+  
+  
