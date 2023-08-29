@@ -58,6 +58,8 @@
 
   /* Disable any transitions on the icon */
   transition: none !important;
+  margin-right: auto;
+  margin-left: 7px;
 }
 
 /* Reset hover transformations on the arrow icon, to ensure it doesn't move */
