@@ -57,8 +57,8 @@ const Dashboard = () => {
                 onClick={() => handlePageChange("editprofile")}
               >
                 <span className={classes.circle}>
-                  <span className={`${classes.icon} ${classes.arrow}`}></span>
-                </span>
+                  <span className={`${classes.icon} ${classes.arrow}`}><FaUser size="1em" color="white" /> </span></span>
+                 
                 <span className={classes["button-text"]}>Modifier mon profile</span>
               </button>
 
@@ -67,7 +67,7 @@ const Dashboard = () => {
                 onClick={() => handlePageChange("history")}
               >
                 <span className={classes.circle}>
-                  <span className={`${classes.icon} ${classes.arrow}`}></span>
+                  <span className={`${classes.icon} ${classes.arrow}`}><FaUser size="1em" color="white" /> </span>
                 </span>
                 <span className={classes["button-text"]}>Mon historique</span>
               </button>
@@ -76,7 +76,7 @@ const Dashboard = () => {
                 onClick={() => handlePageChange("editprofile")}
               >
                 <span className={classes.circle}>
-                  <span className={`${classes.icon} ${classes.arrow}`}></span>
+                  <span className={`${classes.icon} ${classes.arrow}`}><FaUser size="1em" color="white" /> </span>
                 </span>
                 <span className={classes["button-text"]}>Prendre rendez-vous</span>
               </button>
@@ -85,7 +85,7 @@ const Dashboard = () => {
                 onClick={() => handlePageChange("editprofile")}
               >
                 <span className={classes.circle}>
-                  <span className={`${classes.icon} ${classes.arrow}`}></span>
+                  <span className={`${classes.icon} ${classes.arrow}`}><FaUser size="1em" color="white" /> </span>
                 </span>
                 <span className={classes["button-text"]}>Deconnecter</span>
               </button>
