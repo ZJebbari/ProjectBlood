@@ -39,6 +39,10 @@ const Dashboard = () => {
   }
   return (
     <div>
+      <div className={` ${classes.entete}`}>
+        <h2><spam>"</spam> Votre don de sang : une goutte d'espoir qui peut guider quelqu'un vers la lumière.
+        <spam>"</spam>  </h2>
+      </div>
       
         <Row className={`  ${classes.row}`}>
           <Col md={2}  className={`  ${classes.colCustom}`}>
@@ -84,6 +88,7 @@ const Dashboard = () => {
           <Col md={8}  >
           <div className="flex-grow-1 p-3">{pageContent}</div></Col>
           <Col md={4}   className={` ${classes.section3}`}>
+            
             <BloodImg/>
           </Col>
         </Row>

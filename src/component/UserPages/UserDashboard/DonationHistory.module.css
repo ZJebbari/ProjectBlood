@@ -1,0 +1,66 @@
+.button {
+    position: relative;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid #000000;
+    background-color: #000000;
+    overflow: hidden;
+    border-radius: 10px;
+    
+  }
+  
+  .button, .button__icon, .button__text {
+    transition: all 0.3s;
+  }
+  
+  .button .button__text {
+    transform: translateX(14px);
+    color: #fff;
+    font-weight: 600;
+   
+    
+  }
+  
+  .button .button__icon {
+    position: absolute;
+    transform: translateX(80px);
+    height: 100%;
+    width: 39px;
+    background-color: #a0fc62;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+  
+  .button:hover {
+    background:  #a0fc62;
+  }
+  
+  .button:hover .button__text {
+    color: transparent;
+  }
+  
+  .button:hover .button__icon {
+    width: 148px;
+    transform: translateX(0);
+  }
+  
+  .button:active .button__icon {
+    background-color: #146c54;
+  }
+  
+  .button:active {
+    border: 1px solid #146c54;
+  }
+  .tablesection{
+ 
+    padding-top: 3%;
+    height: 650px;
+    overflow: scroll;
+    padding-top: 3%;
+  }

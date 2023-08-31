@@ -1,4 +1,18 @@
  
+.entete{
+  background-color: #500702;
+  height: 180px;
+ padding-left: 5%;
+ padding-top: 7%;
+ 
+}
+
+.entete h2{
+  color: azure;
+} 
+.entete spam{
+  color: rgb(255, 248, 48);
+} 
 @media screen and (max-width: 576px) {
   .horizontaldiv{
     display: flex !important; 
@@ -26,6 +40,10 @@
 .button:hover ,.circle:hover{
 background-color: #fefeff72!important; 
 }
+.entete{ 
+  padding-top: 80px !important; 
+  
+ }
 }
  
 .containerCustom {
