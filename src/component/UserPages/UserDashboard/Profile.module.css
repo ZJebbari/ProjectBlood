@@ -1,0 +1,23 @@
+.centerText {
+  text-align: center;
+  font-weight: bold;
+ 
+}
+.card {
+  
+  border-color: black;
+  border-style: double;
+  border-radius: 14px;
+ 
+ 
+}
+.entete{
+  background-color: rgb(0, 0, 0);
+  border-radius:  14px  14px  0 0px;
+  height: 80px;
+  color: aliceblue;
+  padding: 3%;
+}
+h5{
+  margin-left: 10px
+}

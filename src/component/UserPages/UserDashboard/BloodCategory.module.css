@@ -1,0 +1,27 @@
+/* BloodCategory.module.css */
+
+.circle-column {
+    text-align: center;
+  }
+  
+  .circle-content {
+    display: inline-block;
+    width: 40px; /* Ajustez la largeur du cercle selon vos besoins */
+    height: 40px; /* Ajustez la hauteur du cercle selon vos besoins */
+    line-height: 40px;
+    border-radius: 50%; /* Forme circulaire */
+    background-color: #f0f0f0; /* Couleur de fond */
+    color: #7f0a02;
+   border-color: #7f0a02;
+   border-style: solid;
+   
+  }
+  .container{
+    width: 300px; 
+    padding: 2%;
+  }
+  .circle-red{
+    background-color: #7f0a02;
+    color: #f0f0f0;
+  }
+  

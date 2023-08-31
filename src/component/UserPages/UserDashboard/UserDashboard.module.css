@@ -1,12 +1,29 @@
 .banner {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../../../assets/img/WorldBlood.png") center / cover no-repeat fixed;
-  height: 73vh;
+    url("../../../assets/img/sangngern.jpg") center / cover no-repeat fixed;
+  height: 55vh;
+ 
+}
+@media screen and (max-width: 576px) {
+  .entete{ 
+   padding-top: 80px !important; 
+   
+  }
+}
+.entete{
+  background-color: #500702;
+  height: 180px;
+ padding-left: 5%;
+ padding-top: 7%;
  
 }
 
-
-  
+.entete h2{
+  color: azure;
+} 
+.entete spam{
+  color: rgb(255, 248, 48);
+} 
   @media screen and (max-width: 768px) {
     .banner {
       height: 80vh; /* Adjust the height according to your needs */
@@ -15,14 +32,14 @@
   
   @media screen and (max-width: 576px) {
     .banner{
-      height: 60vh; /* Adjust the height according to your needs */
+      height: 44vh; /* Adjust the height according to your needs */
     }
   }
  /* WaterDrop.module.css */
 
 /* WaterDrop.module.css */
 
-/* WaterDrop.module.css */
+/* WaterDrop.module.css  :#7f0a02;*/
 
 /* WaterDrop.module.css */
 

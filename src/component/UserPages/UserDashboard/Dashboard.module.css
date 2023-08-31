@@ -1,15 +1,55 @@
-.verticaldiv {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(8, 100, 100);
-  height: 150px;
-  width: 200px;
+ 
+@media screen and (max-width: 576px) {
+  .horizontaldiv{
+    display: flex !important; 
+  flex-direction: row !important;
+  height: 150px !important;
 }
+.button-text { 
+ margin-left: 20% !important;
+  color: #fefeff !important;
+  font-weight: 500 !important;
+  font-size: small !important;
+  text-align: start !important;
+   
+}
+.circle {
+  width: 1.5rem !important;  
+  height: 7rem !important;  
+  border-radius: 0rem !important;
+  background-color: transparent !important;
 
+}
+.learn-more {
+   margin-right: 2%;
+}
+.button:hover ,.circle:hover{
+background-color: #fefeff72!important; 
+}
+}
+ 
 .containerCustom {
-  background-color: #d22e2e; /* Your custom background color */
+  background-color:#fff; /* Your custom background color */
 }
-
+.colCustom{
+   background-color:#500702;
+ 
+}
+.section2{
+  border-radius:  20px 0 0  0px;
+  background-color: rgb(249, 249, 249);
+}
+.section3{
+  background-color: rgb(248, 248, 248);
+  padding: 1%;
+}
+.section3 entete{
+  background-color: aqua;
+  height: 20px;
+}
+.row{
+  background-color: #500702;
+}
 .button {
   position: relative;
   display: inline-block;
@@ -27,7 +67,7 @@
 }
 
 .learn-more {
-  width: 19rem;
+  width: 15rem;
   height: auto;
 }
 
@@ -37,7 +77,7 @@
   position: relative;
   width: 3rem;
   height: 3rem;
-  background: #7f0a02;
+  background: #ffffff6f;
   border-radius: 1.625rem;
 
   /* Flexbox properties for centering */
@@ -88,8 +128,8 @@
   padding: 0.75rem 0;
   margin: 0 0 0 1.85rem;
   color: #030304;
-  font-weight: 700;
-  line-height: 1.6;
+  font-weight: 600;
+  line-height: 1;
   text-align: center;
   text-transform: uppercase;
 }
@@ -117,3 +157,37 @@
 .button:hover .button-text {
   color: #fff;
 }
+
+/* Styles for the button when it's active (clicked and held) */
+.button:active .circle,
+.button:focus .circle {
+  width: 100%;
+  
+}
+.button-text:active {color: #fff;
+}
+.button:active .circle .icon,
+.button:active .circle .icon.arrow,
+.button:focus .circle .icon,
+.button:focus .circle .icon.arrow {
+  transform: translate(1rem, 0);
+  position: static !important;
+  top: auto !important;
+  margin-right: auto !important;
+ 
+}
+
+.button:active .circle .icon.arrow::before,
+.button:focus .circle .icon.arrow::before {
+  transform: rotate(45deg);
+  top: -0.29rem;
+  right: 0.0625rem;
+  
+}
+/* Change the color of the button text when it's active */
+.button:active .button-text,
+.button.active .button-text,
+.button:focus .button-text {
+  color: white !important;
+}
+ 

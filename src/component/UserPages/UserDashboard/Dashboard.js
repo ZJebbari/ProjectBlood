@@ -3,8 +3,11 @@ import { Container, Row, Col } from "react-bootstrap"; // Import react-bootstrap
 import Profile from "./Profile"; // Import internal components
 import EditProfile from "./EditProfile";
 import DonationHistory from "./DonationHistory";
+import BloodImg from "./BloodImg";
 import {
   FaUser,
+  FaPencilAlt ,
+  FaHistory,
   FaMale,
   FaMapMarkerAlt,
   FaPhone,
@@ -36,11 +39,11 @@ const Dashboard = () => {
   }
   return (
     <div>
-      <Container className={`my-5  mx-3 py-2 px-3 ${classes.containerCustom}`}>
-        <Row>
-          <Col md={3}>
+      
+        <Row className={`  ${classes.row}`}>
+          <Col md={2}  className={`  ${classes.colCustom}`}>
             {/* Partie des boutons */}
-            <div className="d-flex flex-column">
+            <div  className={` d-flex flex-column ${classes.horizontaldiv}  `} >
               <button
                 className={`${classes.button} ${classes["learn-more"]}`}
                 onClick={() => handlePageChange("profile")}
@@ -57,9 +60,9 @@ const Dashboard = () => {
                 onClick={() => handlePageChange("editprofile")}
               >
                 <span className={classes.circle}>
-                  <span className={`${classes.icon} ${classes.arrow}`}><FaUser size="1em" color="white" /> </span></span>
+                  <span className={`${classes.icon} ${classes.arrow}`}><FaPencilAlt size="1em" color="white" /> </span></span>
                  
-                <span className={classes["button-text"]}>Modifier mon profile</span>
+                <span className={classes["button-text"]}>&ensp;Modifier mon profile</span>
               </button>
 
               <button
@@ -67,35 +70,26 @@ const Dashboard = () => {
                 onClick={() => handlePageChange("history")}
               >
                 <span className={classes.circle}>
-                  <span className={`${classes.icon} ${classes.arrow}`}><FaUser size="1em" color="white" /> </span>
+                  <span className={`${classes.icon} ${classes.arrow}`}><FaHistory size="1em" color="white" /> </span>
                 </span>
                 <span className={classes["button-text"]}>Mon historique</span>
               </button>
-              <button
-                className={`${classes.button} ${classes["learn-more"]}`}
-                onClick={() => handlePageChange("editprofile")}
-              >
-                <span className={classes.circle}>
-                  <span className={`${classes.icon} ${classes.arrow}`}><FaUser size="1em" color="white" /> </span>
-                </span>
-                <span className={classes["button-text"]}>Prendre rendez-vous</span>
-              </button>
-              <button
-                className={`${classes.button} ${classes["learn-more"]}`}
-                onClick={() => handlePageChange("editprofile")}
-              >
-                <span className={classes.circle}>
-                  <span className={`${classes.icon} ${classes.arrow}`}><FaUser size="1em" color="white" /> </span>
-                </span>
-                <span className={classes["button-text"]}>Deconnecter</span>
-              </button>
+              
+             
             </div>
           </Col>
-          <Col md={9} className="banner-desc lh-lg">
-            <div className="flex-grow-1 p-3">{pageContent}</div>
+          <Col md={10}   className={` banner-desc lh-lg  ${classes.section2}`}>
+            
+            <Row >
+          <Col md={8}  >
+          <div className="flex-grow-1 p-3">{pageContent}</div></Col>
+          <Col md={4}   className={` ${classes.section3}`}>
+            <BloodImg/>
           </Col>
         </Row>
-      </Container>
+          </Col>
+        </Row>
+        
     </div>
   );
 };
