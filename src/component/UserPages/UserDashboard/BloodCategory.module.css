@@ -17,6 +17,7 @@
    
   }
   .container{
+
     width: 300px; 
     padding: 2%;
   }
@@ -24,4 +25,11 @@
     background-color: #7f0a02;
     color: #f0f0f0;
   }
+  @media screen and (max-width: 576px) {
+    .container{
+      width: 200px; 
+      padding: 2%;
+    }
+  }
+ 
   

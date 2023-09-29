@@ -28,40 +28,45 @@ const Profile = () => {
       <Container>
         <div className={classes.card}>
           <div className={classes.entete}>
-            <p>
+            <h4>
               <span>
                 <FaUser size="1em" color="white" /> : &emsp;
               </span>
               {userData.firstName}
-            </p>
+            </h4>
           </div>
           <Container>
-            <p>
+          <div className={classes.card2}>
+            <h5>
               <span>
                 <MdEmail size="1em" color="black" /> : &emsp;
               </span>
               {userData.email}
-            </p>
-            <p>
+            </h5>
+            <h5>
               <span>
                 <FaCalendarAlt size="1em" color="black" /> : &emsp;
               </span>
               {userData.date}
-            </p>
-            <p>
+            </h5>
+            <h5>
               <span>
                 <FaMapMarkerAlt size="1em" color="black" /> : &emsp;
               </span>
               {userData.ville}
-            </p>
-            <p>
+            </h5>
+            <h5>
               <span>
                 <FaPhone size="1em" color="black" /> : &emsp;
               </span>
               {userData.num}
-            </p>
+            </h5>
             <h5>Catégorie sanguine :</h5>
+            
             <BloodCategory selectedCategory={userData.catsang} />
+           
+
+            </div>
           </Container>
         </div>
       </Container>

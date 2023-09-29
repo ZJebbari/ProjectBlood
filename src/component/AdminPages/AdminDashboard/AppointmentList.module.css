@@ -1,3 +1,10 @@
+/* custom-select-styles.css */
+.titre{
+    color: rgb(0, 0, 0);
+   margin-top: 1.5%;
+    font-style: oblique;
+}
+
 .button {
     position: relative;
     width: 120px;
@@ -5,8 +12,8 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    border: 1px solid #000000;
-    background-color: #000000;
+    border: 1px solid #5bb3ed;
+    background-color: #5bb3ed;
     overflow: hidden;
     border-radius: 10px;
     
@@ -29,7 +36,7 @@
     transform: translateX(80px);
     height: 100%;
     width: 39px;
-    background-color: #a0fc62;
+    background-color: #0487de;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,7 +45,7 @@
 
   
   .button:hover {
-    background:  #a0fc62;
+    background:  #0487de;
   }
   
   .button:hover .button__text {
@@ -51,20 +58,16 @@
   }
   
   .button:active .button__icon {
-    background-color: #146c54;
+    background-color: #0487de;
   }
   
   .button:active {
-    border: 1px solid #146c54;
+    border: 1px solid #0487de;
   }
   .tablesection{
+ 
     padding-top: 3%;
     height: 650px;
     overflow: scroll;
     padding-top: 3%;
   }
-  @media screen and (max-width: 576px) {
-    .tablesection{
-      font-size: smaller;
-    }
-    }

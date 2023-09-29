@@ -1,0 +1,17 @@
+@media screen and (max-width: 576px) {
+    .principaldiv{
+        background-color:  #500702;
+        padding-top: 20% !important;
+    }
+    
+}
+.principaldiv{
+    background-color:  #500702;
+    justify-content: center;
+    padding-top: 6%;
+}
+.card{
+    background-color:  #f8f8f8af; 
+    font-weight: bold;
+   
+}

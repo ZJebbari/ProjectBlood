@@ -6,6 +6,7 @@ import FormRendezVous from '../Container/Forms/FormRendezVous';
 import Footer from '../Container/Footer/Footer';
 import HeaderUser from './HeaderUser';
 import UserBanner from './UserBanner';
+import Quizz from '../Container/Quizz';
 
 import Dashboard from './UserDashboard/Dashboard';
 import { Link, useNavigate} from "react-router-dom";
@@ -27,6 +28,7 @@ const UserHomePage = ( {props}) => {
       {!showDashboard ? (
         <>
           <UserBanner />
+          <Quizz/>
       <DonInfos />
         </>
       ) : (
