@@ -1,0 +1,200 @@
+ 
+
+  @media screen and (max-width: 576px) {
+    .horizontaldiv{
+      display: flex !important; 
+    flex-direction: row !important;
+    height: 150px !important;
+  }
+  .button-text { 
+   margin-left: 20% !important;
+    color: #fefeff !important;
+    font-weight: 500 !important;
+    font-size: small !important;
+    text-align: start !important;
+     
+  }
+  .circle {
+    width: 1.5rem !important;  
+    height: 7rem !important;  
+    border-radius: 0rem !important;
+    background-color: transparent !important;
+  
+  }
+  .learn-more {
+     margin-right: 2%;
+  }
+  .button:hover ,.circle:hover{
+  background-color: #fefeff72!important; 
+  }
+  .colCustom{
+    height: 100px!important;
+  }
+ 
+  
+  }
+   
+  .containerCustom {
+    background-color:#fff; /* Your custom background color */
+  }
+  .colCustom{
+     background-color:#500702;
+     height: 100vh;
+   
+  }
+  .section2{
+    border-radius:  20px 0 0  0px;
+    background-color: rgb(249, 249, 249);
+  }
+  .section3{
+    background-color: rgb(248, 248, 248);
+    padding: 1%;
+  }
+  .section3 entete{
+    background-color: aqua;
+    height: 20px;
+  }
+  .row{
+    background-color: #500702;
+  }
+  .button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    margin-top: 7%;
+    margin-bottom: 4%;
+  }
+  
+  .learn-more {
+    width: 15rem;
+    height: auto;
+  }
+  
+  /* Styles for the circle container */
+  .circle {
+    transition: all 0.8s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    background: #ffffff6f;
+    border-radius: 1.625rem;
+  
+    /* Flexbox properties for centering */
+    display: flex;
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+  }
+  
+  /* Styles for the icon inside the circle */
+  .circle .icon {
+    /* Reset potential offsets and transformations */
+    position: static;
+    transform: none;
+  
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+  
+    /* Disable any transitions on the icon */
+    transition: none !important;
+    margin-right: auto;
+    margin-left: 7px;
+  }
+  
+  /* Reset hover transformations on the arrow icon, to ensure it doesn't move */
+  .circle .icon.arrow {
+    left: 0;
+    transform: none;
+  }
+  
+  .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    transform: rotate(45deg);
+  }
+  
+  .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: #030304;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  /* Hover effects on the button */
+  .button:hover .circle {
+    width: 100%;
+  }
+  
+  .button:hover .circle .icon,
+  .button:hover .circle .icon.arrow {
+    /* Ensure the icon and arrow don't move or transform on hover */
+    transform: translate(1rem, 0);
+    position: static !important;
+    top: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .button:hover .circle .icon.arrow::before {
+    transform: rotate(45deg);
+    top: -0.29rem;
+    right: 0.0625rem;
+  }
+  
+  .button:hover .button-text {
+    color: #fff;
+  }
+  
+  /* Styles for the button when it's active (clicked and held) */
+  .button:active .circle,
+  .button:focus .circle {
+    width: 100%;
+    
+  }
+  .button-text:active {color: #fff;
+  }
+  .button:active .circle .icon,
+  .button:active .circle .icon.arrow,
+  .button:focus .circle .icon,
+  .button:focus .circle .icon.arrow {
+    transform: translate(1rem, 0);
+    position: static !important;
+    top: auto !important;
+    margin-right: auto !important;
+   
+  }
+  
+  .button:active .circle .icon.arrow::before,
+  .button:focus .circle .icon.arrow::before {
+    transform: rotate(45deg);
+    top: -0.29rem;
+    right: 0.0625rem;
+    
+  }
+  /* Change the color of the button text when it's active */
+  .button:active .button-text,
+  .button.active .button-text,
+  .button:focus .button-text {
+    color: white !important;
+  }
+   

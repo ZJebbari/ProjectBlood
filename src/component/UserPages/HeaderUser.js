@@ -9,9 +9,19 @@ import Button from "../../UI/Button";
 import { Link, useNavigate} from "react-router-dom";
 
 
-const HeaderUser = () => {
+const HeaderUser = (props) => {
+  const history=useNavigate();
   
-const history = useNavigate();
+  const handleDashboardClick = () => {
+    props.onClick(); // Appel à la fonction depuis les props
+  };
+  const  handleHomeClick = () => {
+    props.home(); // Appel à la fonction depuis les props
+  };
+  
+  const  logoutClick = () => {
+    history("/") // Appel à la fonction depuis les props
+  };
   // Nettoyer l'écouteur d'événement lorsque le composant est démonté
 
   const handleScrollToForm = () => {
@@ -67,7 +77,7 @@ const history = useNavigate();
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item pe-4">
+              <li className="nav-item pe-4" onClick={handleHomeClick}>
                 <a
                   className={`nav-link active ${classes.navlink}`}
                   aria-current="page"
@@ -76,7 +86,7 @@ const history = useNavigate();
                   Accueil
                 </a>
               </li>
-              <li className="nav-item pe-4">
+              <li className="nav-item pe-4" onClick={handleHomeClick}>
                 <a
                   onClick={handleScrollToCitoyenne}
                   className={`nav-link active ${classes.navlink}`}
@@ -96,7 +106,7 @@ const history = useNavigate();
                   />
                 </Dropdown.Toggle>
                 <Dropdown.Menu className={` ${classes.dropdownmenu}`}>
-                  <Dropdown.Item className={` ${classes.dropdownitem}`}  onClick={() => history("/dashboard")}>
+                  <Dropdown.Item className={` ${classes.dropdownitem}`} onClick={handleDashboardClick}>
                     
                   
                       Mon profil
@@ -104,7 +114,7 @@ const history = useNavigate();
                   </Dropdown.Item>
                   <Dropdown.Item
                     className={` ${classes.dropdownitem}`}
-                    href="#"
+                    onClick={logoutClick}
                   >
                     Déconnecter
                   </Dropdown.Item>
