@@ -91,7 +91,31 @@ const SignUp = () => {
     reset: passwordComfirmReset,
   } = useInput((value) => value.trim() !== "" && value.trim().length >= 8);
 
-  const submitHandler = (event) => {
+  async function addHandler(profile) {
+    try {
+      const response = await fetch(
+        "http://localhost:8080/api/v1/auth/register",
+        {
+          method: "POST",
+          body: JSON.stringify(profile),
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+
+      const data = await response.json();
+      // handle data if needed
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const submitHandler = async (event) => {
     event.preventDefault();
     if (
       !enteredFullNameIsValid ||
@@ -100,11 +124,28 @@ const SignUp = () => {
       !enteredEmailIsValid ||
       !enteredPhoneIsValid ||
       !enteredDateIsValid ||
-      enteredPasswordIsValid ||
-      enteredpasswordComfirmIsValid
+      !enteredPasswordIsValid ||
+      !enteredpasswordComfirmIsValid
     ) {
       return;
     }
+
+    if (password !== passwordComfirm) {
+      // Show some error to the user about passwords not matching
+      return;
+    }
+
+    const profile = {
+      fullname: fullName,
+      gender: sexe,
+      city: city,
+      phone: phone,
+      date: date,
+      email: email,
+      password: password, // be careful sending passwords like this
+    };
+
+    await addHandler(profile);
     fullNameReset();
     sexeReset();
     cityReset();
@@ -169,7 +210,7 @@ const SignUp = () => {
                 </label>
                 <select
                   className={sexeClasses}
-                  id="inputGroupSelect01"
+                  id="inputGroupSelect"
                   onChange={sexeHandler}
                   onBlur={sexeOnBlur}
                   value={sexe}
