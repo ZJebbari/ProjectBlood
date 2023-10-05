@@ -9,8 +9,22 @@ import UserProfileModal from "./UserProfileModal";
 import Button from "../../UI/Button";
 import { Offcanvas, Stack, Modal, Form } from "react-bootstrap";
 import SignUp from "../Container/Forms/SignUp";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
+  const currentUser = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  // const logout = () => {
+  //   dispatch(clearCurrentUser());
+  //   navigate("/login");
+  // };
+
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -112,7 +126,7 @@ const Header = () => {
                   href="#"
                   onClick={handleProfileIconClick}
                 >
-                  <FontAwesomeIcon icon={faUser} />
+                  <FontAwesomeIcon icon={faUser} style={{ color: "red" }} />
                 </a>
               </li>
 

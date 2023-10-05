@@ -37,7 +37,8 @@ const Banner = () => {
       <Modal show={showModal} onHide={closeModal}>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
-          <SignUp />
+          <SignUp closeModal={closeModal} />{" "}
+          {/* Pass the closeModal function as prop */}
         </Modal.Body>
       </Modal>
     </section>

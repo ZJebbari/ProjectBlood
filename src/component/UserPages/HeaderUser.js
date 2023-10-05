@@ -6,12 +6,35 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import classes from "./HeaderUser.module.css";
 import { Dropdown } from "react-bootstrap";
 import Button from "../../UI/Button";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCurrentUser } from "../../store/actions/user";
 
+const HeaderUser = (props) => {
+  const currentUser = useSelector((state) => state.user);
 
-const HeaderUser = () => {
-  
-const history = useNavigate();
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    dispatch(clearCurrentUser());
+    navigate("/");
+  };
+
+  const nameProfile = currentUser ? (
+    <p className={classes.dropdownitem}>{currentUser.name}</p>
+  ) : null;
+
+  const history = useNavigate();
+
+  const handleDashboardClick = () => {
+    props.onClick(); // Appel à la fonction depuis les props
+  };
+  const handleHomeClick = () => {
+    props.home(); // Appel à la fonction depuis les props
+  };
+
   // Nettoyer l'écouteur d'événement lorsque le composant est démonté
 
   const handleScrollToForm = () => {
@@ -67,7 +90,7 @@ const history = useNavigate();
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item pe-4">
+              <li className="nav-item pe-4" onClick={handleHomeClick}>
                 <a
                   className={`nav-link active ${classes.navlink}`}
                   aria-current="page"
@@ -76,7 +99,16 @@ const history = useNavigate();
                   Accueil
                 </a>
               </li>
-              <li className="nav-item pe-4">
+              <li className="nav-item pe-4" onClick={handleHomeClick}>
+                <a
+                  className={`nav-link active ${classes.navlink}`}
+                  aria-current="page"
+                  href="#"
+                >
+                  {nameProfile}
+                </a>
+              </li>
+              <li className="nav-item pe-4" onClick={handleHomeClick}>
                 <a
                   onClick={handleScrollToCitoyenne}
                   className={`nav-link active ${classes.navlink}`}
@@ -90,21 +122,24 @@ const history = useNavigate();
                   id="dropdown-basic"
                   className={`no-caret nav-item pe-4 bg-transparent border-0 ${classes.customToggle}`}
                 >
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    className={`nav-link active ${classes.navlink} ${classes.customIcon}`}
-                  />
+                  {currentUser && (
+                    <FontAwesomeIcon
+                      icon={faUser}
+                      className={`nav-link active ${classes.navlink} ${classes.customIcon}`}
+                      style={{ color: "green" }}
+                    />
+                  )}
                 </Dropdown.Toggle>
                 <Dropdown.Menu className={` ${classes.dropdownmenu}`}>
-                  <Dropdown.Item className={` ${classes.dropdownitem}`}  onClick={() => history("/dashboard")}>
-                    
-                  
-                      Mon profil
-                    
+                  <Dropdown.Item
+                    className={` ${classes.dropdownitem}`}
+                    onClick={handleDashboardClick}
+                  >
+                    Mon profil
                   </Dropdown.Item>
                   <Dropdown.Item
                     className={` ${classes.dropdownitem}`}
-                    href="#"
+                    onClick={logout}
                   >
                     Déconnecter
                   </Dropdown.Item>

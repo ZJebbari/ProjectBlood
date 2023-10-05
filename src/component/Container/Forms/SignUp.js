@@ -1,4 +1,4 @@
-import { React, useRef, useState } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import { Form, Card, Alert, Breadcrumb } from "react-bootstrap";
 import Button from "../../../UI/Button";
 import { MdEmail } from "react-icons/md";
@@ -13,18 +13,24 @@ import {
 } from "react-icons/fa";
 import useInput from "../../hooks/use-input";
 import classes from "./SignUp.module.css";
+import User from "../../../models/user";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import authenticationService from "../../../services/authentication.service";
+import UserProfileModal from "../../Header/UserProfileModal";
 
-const SignUp = () => {
+const SignUp = (props) => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const [showPassword, setShowPassword] = useState(false);
+  const close = true;
 
   const handlePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   const {
-    value: fullName,
+    value: name,
     isValid: enteredFullNameIsValid,
     hasError: fullNameHasError,
     valueHandler: fullNameHandler,
@@ -41,13 +47,13 @@ const SignUp = () => {
     reset: sexeReset,
   } = useInput((value) => value !== "Genre" && value.trim() !== "");
   const {
-    value: email,
+    value: username,
     isValid: enteredEmailIsValid,
     hasError: emailHasError,
     valueHandler: emailHandler,
     inputBlurHandler: emailOnBlur,
     reset: emailReset,
-  } = useInput((value) => value.includes("@"));
+  } = useInput((value) => value.includes(""));
   const {
     value: city,
     isValid: enteredCityIsValid,
@@ -91,32 +97,99 @@ const SignUp = () => {
     reset: passwordComfirmReset,
   } = useInput((value) => value.trim() !== "" && value.trim().length >= 8);
 
-  async function addHandler(profile) {
-    try {
-      const response = await fetch(
-        "http://localhost:8080/api/v1/auth/register",
-        {
-          method: "POST",
-          body: JSON.stringify(profile),
-          headers: {
-            "content-type": "application/json",
-          },
-        }
-      );
+  // async function addHandler(profile) {
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:8080/api/v1/auth/register",
+  //       {
+  //         method: "POST",
+  //         body: JSON.stringify(profile),
+  //         headers: {
+  //           "content-type": "application/json",
+  //         },
+  //       }
+  //     );
 
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
+  //     if (!response.ok) {
+  //       throw new Error("Something went wrong!");
+  //     }
 
-      const data = await response.json();
-      // handle data if needed
-    } catch (error) {
-      console.error(error);
+  //     const data = await response.json();
+  //     // handle data if needed
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
+  // const submitHandler = async (event) => {
+  //   event.preventDefault();
+  //   if (
+  //     !enteredFullNameIsValid ||
+  //     !enteredSexeIsValid ||
+  //     !enteredCityIsValid ||
+  //     !enteredEmailIsValid ||
+  //     !enteredPhoneIsValid ||
+  //     !enteredDateIsValid ||
+  //     !enteredPasswordIsValid ||
+  //     !enteredpasswordComfirmIsValid
+  //   ) {
+  //     return;
+  //   }
+
+  //   if (password !== passwordComfirm) {
+  //     // Show some error to the user about passwords not matching
+  //     return;
+  //   }
+
+  //   const profile = {
+  //     fullname: fullName,
+  //     gender: sexe,
+  //     city: city,
+  //     phone: phone,
+  //     date: date,
+  //     email: email,
+  //     password: password, // be careful sending passwords like this
+  //   };
+
+  //   await addHandler(profile);
+  //   fullNameReset();
+  //   sexeReset();
+  //   cityReset();
+  //   emailReset();
+  //   phoneReset();
+  //   dateReset();
+  //   passwordReset();
+  //   passwordComfirmReset();
+  // };
+
+  // save user in the local storage and submit to the backend
+
+  const [user, setUser] = useState(new User("", "", "", "", "", "", ""));
+  const [loading, setLoading] = useState(false);
+  const [submited, setSubmited] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const currentUser = useSelector((state) => state.user);
+
+  const navigate = useNavigate();
+
+  //mounted
+  useEffect(() => {
+    if (currentUser?.id) {
+      //Navigate
+      navigate("/UserHomePage");
     }
-  }
+  }, []);
 
-  const submitHandler = async (event) => {
+  useEffect(() => {
+    setUser(new User(name, sexe, city, phone, date, username, password));
+  }, [name, sexe, city, username, phone, date, password]);
+
+  const submitHandler = (event) => {
     event.preventDefault();
+    console.log();
+    setSubmited(true);
+
     if (
       !enteredFullNameIsValid ||
       !enteredSexeIsValid ||
@@ -130,22 +203,24 @@ const SignUp = () => {
       return;
     }
 
-    if (password !== passwordComfirm) {
-      // Show some error to the user about passwords not matching
-      return;
-    }
+    setLoading(true);
 
-    const profile = {
-      fullname: fullName,
-      gender: sexe,
-      city: city,
-      phone: phone,
-      date: date,
-      email: email,
-      password: password, // be careful sending passwords like this
-    };
+    authenticationService
+      .register(user)
+      .then((_) => {
+        navigate("/");
+        props.closeModal();
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error?.response?.status === 409) {
+          setErrorMessage("userName or password is not valid.");
+        } else {
+          setErrorMessage("Unexpected error occured.");
+        }
+        setLoading(false);
+      });
 
-    await addHandler(profile);
     fullNameReset();
     sexeReset();
     cityReset();
@@ -155,6 +230,8 @@ const SignUp = () => {
     passwordReset();
     passwordComfirmReset();
   };
+
+  //////
 
   const fullNameClasses = fullNameHasError ? `${classes.invalid} ` : "";
 
@@ -193,7 +270,7 @@ const SignUp = () => {
                   placeholder="Votre nom complet"
                   onChange={fullNameHandler}
                   onBlur={fullNameOnBlur}
-                  value={fullName}
+                  value={name}
                 />
               </div>
               {fullNameHasError && <p>Veuillez entrer votre nom complet</p>}
@@ -233,11 +310,11 @@ const SignUp = () => {
                 </span>
                 <Form.Control
                   className={emailClasses}
-                  type="email"
+                  type="text"
                   placeholder="Votre adresse email"
                   onChange={emailHandler}
                   onBlur={emailOnBlur}
-                  value={email}
+                  value={username}
                 />
               </div>
               {emailHasError && <p>Veuillez entrer votre E-mail</p>}

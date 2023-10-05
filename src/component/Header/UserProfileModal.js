@@ -3,7 +3,7 @@ import classes from "./UserProfile.module.css";
 import { Button, Modal, Form } from "react-bootstrap";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import FormConnexion from "../Container/Forms/FormConnexion";
+import FormConnexion from "../Container/Forms/FormConnexion.pages";
 import SignUp from "../Container/Forms/SignUp";
 
 const UserProfileModal = ({ openModal }) => {

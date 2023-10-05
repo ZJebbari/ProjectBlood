@@ -1,0 +1,32 @@
+.centerText {
+  text-align: center;
+  font-weight: bold;
+ 
+}
+.card { 
+  border-color: black;
+ 
+  border-style: double;
+  border-radius: 14px;
+ 
+ 
+}
+
+.card2 h5{ 
+  font-family: 'Times New Roman', Times, serif;
+  margin-top: 1%;
+  margin-left: 1%;
+ 
+ 
+}
+
+.entete{
+  background-color: rgb(6, 0, 0);
+  border-radius:  14px  14px  0 0px;
+  height: 80px;
+  color: rgb(255, 255, 255);
+  padding-top: 3%;
+  padding-left: 3%;
+
+}
+
