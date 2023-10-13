@@ -208,4 +208,36 @@ background-color: #fefeff72!important;
 .button:focus .button-text {
   color: white !important;
 }
+.modaltitre{
  
+}
+.modaltext{
+text-align: start;
+font-size: larger;
+}
+.modalfooter{
+  justify-content: center;
+}
+.modalbuttonannuler{
+background-color: rgb(5, 152, 27);
+border-radius: 13px;
+border-style: none;
+height: 50px;
+width: 87px;
+margin-right: 3%;
+
+}
+.modalbuttonannuler:hover{
+  background-color: rgba(4, 223, 37, 0.95);
+  }
+.modalbuttonsup{
+  background-color: rgb(173, 12, 12);
+  border-radius: 13px;
+border-style: none;
+height: 50px;
+width: 87px;
+margin-right: 3%;
+}
+.modalbuttonsup:hover{
+  background-color: rgb(135, 18, 3);
+  }
