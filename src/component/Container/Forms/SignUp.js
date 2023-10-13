@@ -172,7 +172,8 @@ const SignUp = (props) => {
   const currentUser = useSelector((state) => state.user);
 
   const navigate = useNavigate();
-
+  
+  
   //mounted
   useEffect(() => {
     if (currentUser?.id) {
@@ -186,6 +187,7 @@ const SignUp = (props) => {
   }, [name, sexe, city, username, phone, date, password]);
 
   const submitHandler = (event) => {
+    props.ValiderForm();
     event.preventDefault();
     console.log();
     setSubmited(true);
@@ -258,7 +260,7 @@ const SignUp = (props) => {
           <h6 className="text-center mb-4">
             Veuillez remplir le formulaire d'inscription
           </h6>
-          <Form onSubmit={submitHandler}>
+          <Form onSubmit={submitHandler}  >
             <Form.Group controlId="fullName">
               <div className="input-group">
                 <span className="input-group-text">
@@ -429,9 +431,11 @@ const SignUp = (props) => {
               )}
             </Form.Group>
             {!passwordComfirmHasError && <Breadcrumb />}
-            <Button className="w-100 mt-3" type="submit">
+            <Button className="w-100 mt-3" type="submit"
+           >
               {" "}
               Valider{" "}
+              
             </Button>
           </Form>
         </Card.Body>
