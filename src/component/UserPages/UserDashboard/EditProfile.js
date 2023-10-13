@@ -10,7 +10,11 @@ import {
   FaCalendarAlt,
 } from "react-icons/fa";
 import classes from "./EditProfile.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import UserServices from "../../../services/user.services";
+import User from "../../../models/user";
+import { clearCurrentUser } from "../../../store/actions/user";
+import { useNavigate } from "react-router";
 
 const EditProfile = () => {
   const currentUser = useSelector((state) => state.user);
@@ -37,33 +41,67 @@ const EditProfile = () => {
   const [phoneValidation, setPhoneValidation] = useState(true);
   const [dateValidation, setDateValidation] = useState(true);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const submitHandler = (event) => {
     event.preventDefault();
-    if (!fullName || !sexe || !city || !phone || !date) {
+    if (!fullName || !city || !phone) {
       if (!fullName) setFullNameValidation(false);
-      if (!sexe) setGenderValidation(false);
+      // if (!sexe) setGenderValidation(false);
       if (!city) setCityValidation(false);
       if (!phone) setPhoneValidation(false);
-      if (!date) setDateValidation(false);
+      // if (!date) setDateValidation(false);
       return;
     }
 
-    // Soumission du formulaire
+    const user = new User(
+      fullName,
+      currentUser.gender,
+      city,
+      phone,
+      currentUser.date,
+      currentUser.username,
+      currentUser.password,
+      currentUser.role,
+      currentUser.token,
+      currentUser.id
+    );
+    console.log(user.name); // Now it should log the name correctly
+
+    UserServices.update(user)
+      .then((response) => {
+        // Handle a successful update, e.g., show a success message
+        console.log("Profile updated successfully.");
+        // Dispatch actions after a successful update
+        dispatch(clearCurrentUser());
+        navigate("/");
+      })
+      .catch((error) => {
+        // Handle errors, including 405 errors
+        console.error(
+          "Request failed with status code " + error.response?.status
+        );
+        // You may want to display an error message to the user
+      });
+
+    // Reset form validation states
     setFullNameValidation(true);
-    setGenderValidation(true);
+    // setGenderValidation(true);
     setCityValidation(true);
     setPhoneValidation(true);
-    setDateValidation(true);
+    // setDateValidation(true);
 
-    // Autres actions à effectuer après la soumission
+    // Other actions to perform after submission
   };
+
   const handleFullNameChange = (event) => {
     setFullName(event.target.value);
   };
 
-  const handleGenderChange = (event) => {
-    setGender(event.target.value);
-  };
+  // const handleGenderChange = (event) => {
+  //   setGender(event.target.value);
+  // };
 
   const handleCityChange = (event) => {
     setVille(event.target.value);
@@ -73,9 +111,9 @@ const EditProfile = () => {
     setNum(event.target.value);
   };
 
-  const handleDateChange = (event) => {
-    setDate(event.target.value);
-  };
+  // const handleDateChange = (event) => {
+  //   setDate(event.target.value);
+  // };
 
   return (
     <div>
@@ -99,7 +137,7 @@ const EditProfile = () => {
               {!fullNameValidation && <p>Veuillez entrer votre nom complet</p>}
             </Form.Group>
 
-            <Form.Group controlId="sexe">
+            {/* <Form.Group controlId="sexe">
               {fullNameValidation && <Form.Label> </Form.Label>}
               <div className="input-group">
                 <label
@@ -116,12 +154,12 @@ const EditProfile = () => {
                   <option value="Genre" className="text-muted">
                     Genre
                   </option>
-                  <option value="1">Femme</option>
-                  <option value="2">Homme</option>
+                  <option value="Femme">Femme</option>
+                  <option value="Homme">Homme</option>
                 </select>
               </div>
               {!sexeValidation && <p>Veuillez choisir votre sexe</p>}
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group controlId="city">
               {sexeValidation && <Form.Label> </Form.Label>}
@@ -152,7 +190,7 @@ const EditProfile = () => {
               {!phoneValidation && <p>Veuillez entrer votre Telephone</p>}
             </Form.Group>
 
-            <Form.Group controlId="date">
+            {/* <Form.Group controlId="date">
               {phoneValidation && <Form.Label> </Form.Label>}
               <div className="input-group">
                 <span className="input-group-text">
@@ -164,9 +202,8 @@ const EditProfile = () => {
                   onChange={handleDateChange}
                 />
               </div>
-              {!dateValidation && <p>Veuillez choisir la date de naissance</p>}
             </Form.Group>
-            <br />
+            <br /> */}
 
             <Button className="w-100 mt-3" type="submit">
               {" "}

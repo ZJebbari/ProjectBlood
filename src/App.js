@@ -23,7 +23,7 @@ function App() {
         <Route
           path="/UserHomePage"
           element={
-            <AuthGuard roles={[Role.USER]}>
+            <AuthGuard roles={[Role.USER, Role.ADMIN]}>
               <UserHomePage />
             </AuthGuard>
           }

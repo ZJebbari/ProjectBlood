@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import classes from "./FormRendezVous.module.css";
 import {
@@ -12,6 +12,11 @@ import { MdEmail } from "react-icons/md";
 import Card from "../../../UI/Card";
 import Button from "../../../UI/Button";
 import useInput from "../../hooks/use-input";
+import appointmentService from "../../../services/appointment.service";
+import Appoitment from "../../../models/appointment";
+import { useSelector } from "react-redux";
+import AppoitmentNoId from "../../../models/appointmentNoId";
+import CenterService from "../../../services/center.service";
 const FormRendezVous = () => {
   const {
     value: fullName,
@@ -65,6 +70,34 @@ const FormRendezVous = () => {
     reset: dateReset,
   } = useInput((value) => value.trim() !== "");
 
+  const [appointment, setAppointment] = useState(
+    new Appoitment("", "", "", "", "", "")
+  );
+
+  const [sent, setSent] = useState(false);
+  const [centerList, setCenterList] = useState([]);
+  const [selectedCenterId, setSelectedCenterId] = useState("");
+
+  const currentUser = useSelector((state) => state.user);
+
+  useEffect(() => {
+    CenterService.getAllCenters().then((response) => {
+      setCenterList(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    let timer;
+    if (sent) {
+      timer = setTimeout(() => {
+        setSent(false);
+      }, 5000);
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [sent]);
+
   const submitHandler = (event) => {
     event.preventDefault();
     if (
@@ -77,6 +110,32 @@ const FormRendezVous = () => {
     ) {
       return;
     }
+
+    if (!currentUser || currentUser.id === null) {
+      const submitAppointment = new AppoitmentNoId(
+        date,
+        email,
+        fullName,
+        sexe,
+        phone,
+        location
+      );
+      appointmentService.saveAppointmentNoId(submitAppointment);
+    } else {
+      const submitAppointment = new Appoitment(
+        date,
+        email,
+        fullName,
+        sexe,
+        phone,
+        currentUser.id,
+        location
+      );
+      appointmentService.saveAppointment(submitAppointment);
+    }
+
+    setSent(true);
+
     fullNameReset();
     sexeReset();
     locationReset();
@@ -159,16 +218,14 @@ const FormRendezVous = () => {
                     onChange={locationHandler}
                     onBlur={locationOnBlur}
                   >
-                    <option
-                      value="Trouver un lieu de don"
-                      className="text-muted"
-                    >
+                    <option value="" className="text-muted">
                       Trouver un lieu de don
                     </option>
-                    <option value="1">Moins de 4</option>
-                    <option value="2">Entre 4 et 8</option>
-                    <option value="3">Entre 8 et 12</option>
-                    <option value="4">Plus de 12</option>
+                    {centerList.map((center) => (
+                      <option key={center.idCenter} value={center.idCenter}>
+                        {center.city} - {center.centerName}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -219,6 +276,11 @@ const FormRendezVous = () => {
               </div>
             </div>
           </form>
+          {sent && (
+            <h3 style={{ color: "green" }}>
+              Votre demande de rendez-vous a ete traitee avec succes
+            </h3>
+          )}
           <div className={classes.errorMessages}>
             {fullNameHasError && <p>Veuillez entrer votre nom complet</p>}
             {sexeHasError && <p>Veuillez choisir votre sexe</p>}

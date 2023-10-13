@@ -69,71 +69,18 @@ const FormConnexion = () => {
       })
       .catch((error) => {
         console.log(error);
-        setErrorMessage("UserName or password  is not valid.");
+        setErrorMessage("Nom d'utilisateur ou mot de passe non valide.");
         setLoading(false);
       });
   };
 
-  // return (
-  //   <div className="container mt-5">
-  //     <div className="card ms-auto me-auto p-3 shadow-lg custom-card">
-  //       {errorMessage && (
-  //         <div className="alert alert-danger">{errorMessage}</div>
-  //       )}
-
-  //       <form
-  //         onSubmit={handleLogin}
-  //         noValidate
-  //         className={submited ? "was-validated" : ""}
-  //       >
-  //         <div className="form-group">
-  //           <label htmlFor="username">Username:</label>
-  //           <input
-  //             type="text"
-  //             name="username"
-  //             className="form-control"
-  //             placeholder="username"
-  //             value={user.username}
-  //             onChange={(e) => handleChange(e)}
-  //             required
-  //           />
-  //           <div className="invalid-feedback">Username is required.</div>
-
-  //           <label htmlFor="password">Password:</label>
-  //           <input
-  //             type="password"
-  //             name="password"
-  //             className="form-control"
-  //             placeholder="password"
-  //             value={user.password}
-  //             onChange={(e) => handleChange(e)}
-  //             required
-  //           />
-  //           <div className="invalid-feedback">Password is required.</div>
-
-  //           <button className="btn btn-info w-100 mt-3" disabled={loading}>
-  //             Login
-  //           </button>
-  //         </div>
-  //       </form>
-
-  //       <Link
-  //         to="/register"
-  //         className="btn btn-link"
-  //         style={{ color: "darkgray" }}
-  //       >
-  //         Create a New Account
-  //       </Link>
-  //     </div>
-  //   </div>
-  // );
   return (
     <div className={classes["user-profile-modal"]}>
       <h2>
         <b>J'ai déjà un compte</b>
       </h2>
       <h6>Renseignez votre E-mail de donneur</h6>
-
+      {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
       <form onSubmit={handleLogin}>
         <div className="input-group mb-3">
           <input

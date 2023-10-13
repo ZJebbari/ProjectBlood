@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import Select from "react-select";
@@ -7,6 +7,7 @@ import { FaPlus } from "react-icons/fa";
 import centers from "../../../assets/Data/centers";
 import bloodGroups from "../../../assets/Data/bloodGroups";
 import AddTransaction from "./AddTransaction";
+import appointmentService from "../../../services/appointment.service";
 
 function AppointmentList() {
   // Exemple de données pour les centres et les rendez-vous
@@ -28,6 +29,16 @@ function AppointmentList() {
     },
     // Ajoutez plus de rendez-vous au besoin
   ]);
+
+  const [appointment1, setAppointment1] = useState([]);
+
+  useEffect(() => {
+    appointmentService.getAllAppointment().then((response) => {
+      setAppointment1(response.data);
+    });
+  }, []);
+
+  console.log(appointment1);
 
   const handleCenterChange = (selectedOption) => {
     setSelectedCenter(selectedOption);
