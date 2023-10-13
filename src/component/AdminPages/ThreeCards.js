@@ -8,9 +8,9 @@ import {
   
 } from "react-icons/fa";
 const ThreeCards = () => {
-  const [candidatsCount, setCandidatsCount] = useState(0);
-  const [recruteursCount, setRecruteursCount] = useState(0);
-  const [offresCount, setOffresCount] = useState(0);
+  const [candidatsCount, setCandidatsCount] = useState(3);
+  const [recruteursCount, setRecruteursCount] = useState(3);
+  const [offresCount, setOffresCount] = useState(5);
 
   return (
     
@@ -38,7 +38,7 @@ const ThreeCards = () => {
               <FaFlask size="1em" color="black" />
               Stock de sang (Total)</div>
               <div className="cardicon">
-                <div className="card-text">{recruteursCount}</div>
+                <div className="card-text">{recruteursCount} L</div>
                 <div>
                 <i class="fas fa-clipboard-list dashicon"></i>
                 </div>

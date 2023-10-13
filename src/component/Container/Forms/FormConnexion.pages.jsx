@@ -7,9 +7,14 @@ import User from "../../../models/user";
 import authenticationService from "../../../services/authentication.service";
 import { setCurrentUser } from "../../../store/actions/user";
 import { Link } from "react-router-dom";
+import { Modal, Button } from 'react-bootstrap';
 
 const FormConnexion = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   const handlePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -118,7 +123,82 @@ const FormConnexion = () => {
             </span>
           </div>
         </div>
-        <a href="#">Mot de passe oublié</a>
+        <a href="#" onClick={handleShow}>Mot de passe oublié</a>
+
+<Modal show={show} onHide={handleClose}>
+  <Modal.Header closeButton>
+    <Modal.Title>Mot de passe oublié</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    Entrez votre adresse e-mail pour réinitialiser votre mot de passe.
+    <div className="input-group mb-3">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            className={`form-control ${classes["custom-input"]}`}
+            placeholder="Votre adresse email"
+            value={user.username}
+            onChange={(e) => handleChange(e)}
+            required
+          />
+        </div>
+        <div className="input-group mb-3">
+          <input
+            type={showPassword ? "text" : "password"}
+            id="password"
+            name="password"
+            className="form-control custom-input"
+            placeholder="Votre mot de passe"
+            value={user.password}
+            onChange={(e) => handleChange(e)}
+            required
+          />
+          <div className="input-group-append">
+            <span
+              className="input-group-text"
+              onClick={handlePasswordVisibility}
+            >
+              {showPassword ? (
+                <FaEyeSlash size="1.5em" color="gray" />
+              ) : (
+                <FaEye size="1.5em" color="gray" />
+              )}
+            </span>
+          </div>
+        </div>
+        <div className="input-group mb-3">
+          <input
+            type={showPassword ? "text" : "password"}
+            id="password"
+            name="password"
+            className="form-control custom-input"
+            placeholder="Confirmer votre mot de passe"
+            value={user.password}
+            onChange={(e) => handleChange(e)}
+            required
+          />
+          <div className="input-group-append">
+            <span
+              className="input-group-text"
+              onClick={handlePasswordVisibility}
+            >
+              {showPassword ? (
+                <FaEyeSlash size="1.5em" color="gray" />
+              ) : (
+                <FaEye size="1.5em" color="gray" />
+              )}
+            </span>
+          </div>
+        </div>
+    {/* Ajoutez ici les champs de l'adresse e-mail et autres éléments nécessaires */}
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="success" onClick={handleClose}>
+      Réinitialiser le mot de passe
+    </Button>
+  </Modal.Footer>
+</Modal>
         <br />
         <br />
         <button

@@ -5,6 +5,7 @@ import "../../assets/css/styles.css";
 import classes from "./Banner.module.css";
 import Button from "../../UI/Button";
 import { Modal } from "react-bootstrap";
+import { MdCheck } from 'react-icons/md';
 import SignUp from "./Forms/SignUp";
 const Banner = () => {
   const [showModal, setShowModal] = useState(false);
@@ -79,6 +80,7 @@ const Banner = () => {
         <Modal.Body>
         <ProgressBar variant="success" now={progress} />
         <h5>
+        <MdCheck size="2em" color="green" />
         Votre demande a été enregistrée avec succès. </h5>
         </Modal.Body>
       </Modal>

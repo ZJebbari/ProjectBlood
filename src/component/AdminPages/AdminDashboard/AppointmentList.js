@@ -14,6 +14,7 @@ function AppointmentList() {
   const [selectedCenter, setSelectedCenter] = useState("");
   const [showModal, setShowModal] = useState(false);
 
+<<<<<<< Updated upstream
   const [appointment, setAppointment] = useState([]);
 
   useEffect(() => {
@@ -27,6 +28,23 @@ function AppointmentList() {
       setAppointment(formattedData);
     });
   }, []);
+=======
+  const [appointments, setAppointments] = useState([
+    {
+      donorName: "Idrissi laila",
+      centerName: "Centre 1",
+      date: "12-10-2023",
+      id: 1,
+    },
+    {
+      donorName: " Allaoui Adam ",
+      centerName: "Centre 1",
+      date: "12-10-2023",
+      id: 2,
+    },
+    // Ajoutez plus de rendez-vous au besoin
+  ]);
+>>>>>>> Stashed changes
 
   const handleCenterChange = (selectedOption) => {
     setSelectedCenter(selectedOption);

@@ -6,18 +6,10 @@ import classes from "./DonationHistory.module.css";
 const DonationHistory = () => {
   // Simulated donation history data
   const donationHistory = [
-    { date: "2023-08-01", centre: "xxxx", quantite: 50, resultat: 1 },
-    { date: "2023-07-15", centre: "xxxx", quantite: 100, resultat: 1 },
-    { date: "2023-06-22", centre: "xxxx", quantite: 75, resultat: 1 },
-    { date: "2023-08-01", centre: "xxxx", quantite: 50, resultat: 1 },
-    { date: "2023-07-15", centre: "xxxx", quantite: 100, resultat: 1 },
-    { date: "2023-06-22", centre: "xxxx", quantite: 75, resultat: 1 },
-    { date: "2023-08-01", centre: "xxxx", quantite: 50, resultat: 1 },
-    { date: "2023-07-15", centre: "xxxx", quantite: 100, resultat: 1 },
-    { date: "2023-06-22", centre: "xxxx", quantite: 75, resultat: 1 },
-    { date: "2023-08-01", centre: "xxxx", quantite: 50, resultat: 1 },
-    { date: "2023-07-15", centre: "xxxx", quantite: 100, resultat: 1 },
-    { date: "2023-06-22", centre: "xxxx", quantite: 75, resultat: 1 },
+    { date: "2022-06-01", centre: "Centre1", quantite: 350, resultat: 1 },
+    { date: "2023-01-15", centre: "Centre2", quantite: 400, resultat: 1 },
+    { date: "2023-06-22", centre: "Centre1", quantite: 250, resultat: 1 },
+    
   ];
   
   const handleDownload = (ID) => {
@@ -35,7 +27,7 @@ const DonationHistory = () => {
             <th scope="col">#</th>
             <th scope="col">Date</th>
             <th scope="col">Centre</th>
-            <th scope="col">Quantite</th>
+            <th scope="col">Quantite(mL)</th>
             <th scope="col">Resultat</th>
           </tr>
         </thead>
