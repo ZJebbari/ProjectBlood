@@ -14,31 +14,19 @@ function AppointmentList() {
   const [selectedCenter, setSelectedCenter] = useState("");
   const [showModal, setShowModal] = useState(false);
 
-  const [appointments, setAppointments] = useState([
-    {
-      donorName: "John Doe",
-      centerName: "Centre A",
-      date: "2023-09-28",
-      id: 1,
-    },
-    {
-      donorName: "Jane Doe",
-      centerName: "Centre B",
-      date: "2023-09-30",
-      id: 2,
-    },
-    // Ajoutez plus de rendez-vous au besoin
-  ]);
-
-  const [appointment1, setAppointment1] = useState([]);
+  const [appointment, setAppointment] = useState([]);
 
   useEffect(() => {
     appointmentService.getAllAppointment().then((response) => {
-      setAppointment1(response.data);
+      const formattedData = response.data.map((appointment) => ({
+        donorName: appointment.name,
+        centerName: appointment.center.centerName,
+        date: appointment.appointmentDate,
+        id: appointment.id,
+      }));
+      setAppointment(formattedData);
     });
   }, []);
-
-  console.log(appointment1);
 
   const handleCenterChange = (selectedOption) => {
     setSelectedCenter(selectedOption);
@@ -85,7 +73,7 @@ function AppointmentList() {
             </tr>
           </thead>
           <tbody>
-            {appointments.map((appointment) => (
+            {appointment.map((appointment) => (
               <tr key={appointment.id}>
                 <td>{appointment.donorName}</td>
                 <td>{appointment.centerName}</td>
