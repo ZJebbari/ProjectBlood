@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import {  Form } from "react-bootstrap";
-import Button from '../../../UI/Button';
+import React, { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
+import Button from "../../../UI/Button";
 import centers from "../../../assets/Data/centers";
 import Select from "react-select";
 import bloodGroups from "../../../assets/Data/bloodGroups";
-import classes from './AddTransaction.module.css';
+import classes from "./AddTransaction.module.css";
+import bloodGroupService from "../../../services/bloodGroup.service";
+import centerService from "../../../services/center.service";
 
 function AddTransaction(props) {
   const [formData, setFormData] = useState({
@@ -14,6 +16,26 @@ function AddTransaction(props) {
     bloodGroup: "",
     pdfFile: null,
   });
+
+  const [bloodGroup, setBloodGroup] = useState([]);
+  const [selectedValue, setSelectedValue] = useState("");
+  const [centerList, setCenterList] = useState([]);
+  const [selectedCenter, setSelectedCenter] = useState("");
+
+  useEffect(() => {
+    bloodGroupService.getAllBloodGroup().then((response) => {
+      setBloodGroup(response.data);
+      console.log(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    centerService.getAllCenters().then((response) => {
+      setCenterList(response.data);
+    });
+  }, []);
+
+  console.log(bloodGroup.bloodType);
   ////////////////////////
   //boite de dialogue
   //////////////////
@@ -24,6 +46,10 @@ function AddTransaction(props) {
       ...formData,
       [name]: value,
     });
+  };
+
+  const changeHandler = (e) => {
+    setSelectedValue(e.value.target);
   };
 
   const handleFileChange = (e) => {
@@ -44,21 +70,19 @@ function AddTransaction(props) {
         <Form.Group controlId="formcenter">
           <Form.Label className={`${classes.label}`}>Nom du center </Form.Label>
           <Select
-            options={centers.map((center) => ({
-              value: center.id,
-              label: center.name,
+            options={centerList.map((center) => ({
+              value: center.idCenter,
+              label: center.centerName,
             }))}
-            value={formData.center}
-            onChange={(selectedOption) =>
-              handleChange({
-                target: { name: "center", value: formData.center.value },
-              })
-            }
+            value={selectedValue}
+            onChange={changeHandler}
             placeholder="Choisissez un centre"
           />
         </Form.Group>
         <Form.Group controlId="formQuantity">
-          <Form.Label className={`${classes.label}`}>Quantité de sang donnée</Form.Label>
+          <Form.Label className={`${classes.label}`}>
+            Quantité de sang donnée
+          </Form.Label>
           <Form.Control
             type="text"
             name="quantity"
@@ -75,24 +99,26 @@ function AddTransaction(props) {
             onChange={handleChange}
           />
         </Form.Group>
+
         <Form.Group controlId="formbloodGroup">
-          <Form.Label className={`${classes.label}`}>Groupes sanguins </Form.Label>
+          <Form.Label className={`${classes.label}`}>
+            Groupes sanguins{" "}
+          </Form.Label>
           <Select
-            options={bloodGroups.map((blood) => ({
-              value: blood.id,
-              label: blood.category,
+            options={bloodGroup.map((blood) => ({
+              value: blood.bloodGroupId,
+              label: blood.bloodType,
             }))}
-            value={formData.bloodGroup}
-            onChange={(selectedOption) =>
-              handleChange({
-                target: { name: "bloodGroup", value: formData.bloodGroup.value },
-              })
-            }
+            value={bloodGroup.bloodGroupId}
+            onChange={changeHandler}
             placeholder="Précisez le groupe"
-          />
+          ></Select>
         </Form.Group>
         <Form.Group controlId="formPdfFile">
-          <Form.Label className={`${classes.label}`}> Résultat du test (Fichier PDF)</Form.Label>
+          <Form.Label className={`${classes.label}`}>
+            {" "}
+            Résultat du test (Fichier PDF)
+          </Form.Label>
           <Form.Control
             type="file"
             name="pdfFile"
@@ -100,9 +126,9 @@ function AddTransaction(props) {
           />
         </Form.Group>
         <div className={`${classes.divbtn}`}>
-        <Button  className={`${classes.btn}`}  onClick={handleSubmit}>
-          Enregistrer
-        </Button>
+          <Button className={`${classes.btn}`} onClick={handleSubmit}>
+            Enregistrer
+          </Button>
         </div>
       </Form>
     </div>

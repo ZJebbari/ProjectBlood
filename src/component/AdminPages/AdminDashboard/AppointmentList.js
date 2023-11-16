@@ -8,6 +8,7 @@ import centers from "../../../assets/Data/centers";
 import bloodGroups from "../../../assets/Data/bloodGroups";
 import AddTransaction from "./AddTransaction";
 import appointmentService from "../../../services/appointment.service";
+import centerService from "../../../services/center.service";
 
 function AppointmentList() {
   // Exemple de données pour les centres et les rendez-vous
@@ -15,6 +16,8 @@ function AppointmentList() {
   const [showModal, setShowModal] = useState(false);
 
   const [appointment, setAppointment] = useState([]);
+  const [centerList, setCenterList] = useState([]);
+  const [selectedCenterId, setSelectedCenterId] = useState("");
 
   useEffect(() => {
     appointmentService.getAllAppointment().then((response) => {
@@ -28,9 +31,15 @@ function AppointmentList() {
     });
   }, []);
 
+  useEffect(() => {
+    centerService.getAllCenters().then((response) => {
+      setCenterList(response.data);
+    });
+  }, []);
+
   const handleCenterChange = (selectedOption) => {
     setSelectedCenter(selectedOption);
-    console.log(selectedOption);
+    setSelectedCenterId(selectedOption ? selectedOption.value : ""); // If there's no selected center, reset the filter.
   };
 
   const handleAddTransaction = (appointmentId) => {
@@ -52,9 +61,9 @@ function AppointmentList() {
       </p>
       <div className={`${classes.customselect}`}>
         <Select
-          options={centers.map((center) => ({
-            value: center.id,
-            label: center.name,
+          options={centerList.map((center) => ({
+            value: center.idCenter,
+            label: center.centerName,
           }))}
           value={selectedCenter}
           onChange={handleCenterChange}
@@ -73,24 +82,31 @@ function AppointmentList() {
             </tr>
           </thead>
           <tbody>
-            {appointment.map((appointment) => (
-              <tr key={appointment.id}>
-                <td>{appointment.donorName}</td>
-                <td>{appointment.centerName}</td>
-                <td>{appointment.date}</td>
-                <td>
-                  <button
-                    className={`${classes.button}`}
-                    onClick={() => handleAddTransaction(appointment.id)}
-                  >
-                    <span className={`${classes.button__text}`}>Ajouter </span>
-                    <span className={`${classes.button__icon}`}>
-                      <FaPlus size="1em" color="white" />
-                    </span>
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {appointment
+              .filter(
+                (app) =>
+                  !selectedCenterId || app.centerName === selectedCenter.label
+              )
+              .map((appointment) => (
+                <tr key={appointment.id}>
+                  <td>{appointment.donorName}</td>
+                  <td>{appointment.centerName}</td>
+                  <td>{appointment.date}</td>
+                  <td>
+                    <button
+                      className={`${classes.button}`}
+                      onClick={() => handleAddTransaction(appointment.id)}
+                    >
+                      <span className={`${classes.button__text}`}>
+                        Ajouter{" "}
+                      </span>
+                      <span className={`${classes.button__icon}`}>
+                        <FaPlus size="1em" color="white" />
+                      </span>
+                    </button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

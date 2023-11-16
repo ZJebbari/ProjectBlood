@@ -7,28 +7,28 @@ import bloodGroups from "../../../assets/Data/bloodGroups";
 import classes from "./AddTransaction.module.css";
 
 function EditStock() {
-    const [formData, setFormData] = useState({
-        center: null,
-        bloodGroup: null,
-        action: null,
-        quantity: ''
-      });
-    
-      // Fonction pour gérer les changements dans les champs du formulaire
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-          ...formData,
-          [name]: value
-        });
-      
-    };
-    
-      // Fonction pour gérer la soumission du formulaire
-      const handleSubmit = () => {
-        // Mettez ici le code pour traiter les données (par exemple, envoyer à un serveur, effectuer des calculs, etc.)
-        console.log('Formulaire soumis avec les données :', formData);
-      };
+  const [formData, setFormData] = useState({
+    center: null,
+    bloodGroup: null,
+    action: null,
+    quantity: "",
+  });
+
+  // Fonction pour gérer les changements dans les champs du formulaire
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Fonction pour gérer la soumission du formulaire
+  const handleSubmit = () => {
+    // Mettez ici le code pour traiter les données (par exemple, envoyer à un serveur, effectuer des calculs, etc.)
+    console.log("Formulaire soumis avec les données :", formData);
+  };
+
   return (
     <div>
       <h2>Modifier le Stock</h2>
@@ -61,7 +61,10 @@ function EditStock() {
             value={formData.bloodGroup}
             onChange={(selectedOption) =>
               handleChange({
-                target: { name: "bloodGroup", value: formData.bloodGroup.value  },
+                target: {
+                  name: "bloodGroup",
+                  value: formData.bloodGroup.value,
+                },
               })
             }
             placeholder="Précisez le groupe"
